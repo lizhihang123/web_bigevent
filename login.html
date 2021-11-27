@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--  引入bootstrap文件 -->
+    <link rel="stylesheet" href="./assets/lib/bootstrap.css">
+    <!-- 引入layui -->
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+    <!--  引入自己的css文件-->
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./assets/fonts2/iconfont.css">
+
+</head>
+
+<body>
+    <div class="header w">
+        <img src="./assets/images/logo.png" alt="" />
+    </div>
+
+    <div class="main">
+        <!-- title头部区域 -->
+        <div class="title-box">
+        </div>
+
+        <!-- 登录框 -->
+        <form class="layui-form login" id="form_login">
+            <!-- 用户名 -->
+            <div class="layui-form-item">
+                <i class="iconfont icon-yonghu"></i>
+                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input"
+                    lay-verify="required">
+            </div>
+            <!-- 密码 -->
+            <div class="layui-form-item">
+                <i class="iconfont icon-jiesuo"></i>
+                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input"
+                    lay-verify="required|pwd">
+            </div>
+            <!-- 立即提交按钮 -->
+            <div class="layui-form-item item-btn">
+                <!-- 注意：layui-btn-fluid表示流式布局，撑满盒子 -->
+                <!-- 注意：lay-submit属性是布尔属性，表示提交按钮 -->
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">立即提交</button>
+            </div>
+            <!-- 去注册账号 -->
+            <div class="layui-form-item link">
+                <a href="javascript:;" class="link_reg">去注册账号</a>
+            </div>
+        </form>
+        <!-- 注册框 -->
+        <form class="layui-form reg" action="" id="form_reg">
+            <!-- 用户名 -->
+            <div class="layui-form-item">
+                <i class="iconfont icon-yonghu"></i>
+                <input type="text" name="username" placeholder="请输入用户名" autocomplete="off" class="layui-input"
+                    lay-verify="required">
+            </div>
+            <!-- 密码 -->
+            <div class="layui-form-item">
+                <i class="iconfont icon-jiesuo"></i>
+                <input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input"
+                    lay-verify="required|pwd|repwd">
+            </div>
+            <!-- 第二个密码框 -->
+            <div class="layui-form-item">
+                <i class="iconfont icon-jiesuo"></i>
+                <input type="password" name="repassword" placeholder="请输入密码" autocomplete="off" class="layui-input"
+                    lay-verify="required|pwd|repwd">
+            </div>
+            <!-- 立即提交按钮 -->
+            <div class="layui-form-item">
+                <!-- 注意：layui-btn-fluid表示流式布局，撑满盒子 -->
+                <!-- 注意：lay-submit属性是布尔属性，表示提交按钮 -->
+                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="formDemo">立即提交</button>
+            </div>
+            <!-- 去登录账号 -->
+            <div class="layui-form-item  link">
+                <a href="javascript:;" class="link_login" id="go_login">去登录账号</a>
+            </div>
+        </form>
+
+
+    </div>
+    <!-- 引入layui.js -->
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <!-- 导入jQuery -->
+    <script src="./assets/lib/jquery.js"></script>
+    <!-- 引入封装的baseAPI -->
+    <script src="./assets/js/baseAPI.js"></script>
+    <!-- 导入自己的js -->
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
