@@ -1,0 +1,78 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    background: url(../images/login_bg.jpg) no-repeat center;
+}
+
+.w {
+    width: 800px;
+    margin: 0 auto;
+}
+.header {
+    padding-top: 20px;
+}
+
+.main {
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    width: 400px;
+    height: 310px;
+    background-color: #fff;
+}
+.title-box {
+    height: 60px;
+    background: url(../images/login_title.png) no-repeat center;
+    padding-top: 15px;
+}
+
+
+
+
+
+
+
+
+/* input外面的样式 */
+.layui-form {
+    position: relative;
+}
+.layui-form-item {
+    position: relative;
+    margin: 0 20px 20px 20px;
+}
+/* 字体图标的设置 */
+.layui-form-item .iconfont {
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+/* 注册框 */
+.reg {
+    display: none;
+}
+/* 输入框的样式 */
+.layui-input {
+    padding-left: 40px;
+}
+/* 按钮的样式 */
+.layui-btn  {
+    background-color: #1e9fff;
+}
+/* 链接的样式*/
+.link {
+    position: absolute;
+    right: -20px;
+    bottom: -48px;
+    padding: 0 20px;
+}
+.link a {
+    color: #000;
+}
+.link a:hover {
+    text-decoration: none;
+    color: #777777;
+}

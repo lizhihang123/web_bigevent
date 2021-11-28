@@ -1,85 +1,70 @@
 $(function () {
 
-    // 1. 登录和注册链接的显示隐藏
-    $(".link_reg").on("click", function () {
-        $(".login").hide();
-        $(".reg").show();
-    })
-
-    $(".link_login").on("click", function () {
-        $(".reg").hide();
-        $(".login").show();
-    })
-    // 2. 密码校验的自定义
-    // 2.1  // layui 是一个对象,引入了layui.js文件就有这个对象 类比jQuery 引入就有$; form是layui的一个属性
-    // 2.2 //注意写法是键值对的形式 [\S]表示的非空格，表示表单必须是非空格，6-12位
-    var form = layui.form;
+    // 1. 获取用户信息的函数
+    getuserinfo();
+    // 从layui上导出layer
     var layer = layui.layer;
-    form.verify({  // 这个属性有verify这个方法
-        pwd: [/^[\S]{6,12}$/, "密码必须是6- 12位，且不能出现空格"],
-        repwd: function (value) {
-            var pwd = $("#form_reg [name=password]").val();
-            if (pwd !== value) {
-                return '两次输入的密码值不一致';
-            }
-        }
-    })
-
-
-    // var data = {
-    //     username: $("#reg [name=username]").val(),
-    //     password: $("#reg [name=password]").val()
-    // }; 
-
-    // 3. 注册效果
-    $("#form_reg").on("submit", function (e) {
-        console.log(1);
-        e.preventDefault();
-        var data = {
-            username: $("#form_reg [name=username]").val(),
-            password: $("#form_reg [name=password]").val()
-        };
-        $.post("/api/reguser", data, function (res) {
-            // if (res.status !== 0) {
-            //     console.log(res.message);
-            // }
-            // console.log('注册成功');
-            // // 注意书写位置
-            // $("#go_login").click();
-
-            if (res.status !== 0) {
-                return layer.msg(res.message)
-
-            }
-            layer.msg('注册成功')
-            // 注意书写位置 必须注册成功才能跳转
-            $("#go_login").click();
-        })
-
-    })
-
-    // 4. 登录效果
-
-    $("#form_login").submit(function (e) {
-        // 4.1 取消默认提交事件
-        e.preventDefault();
-        // 4.2 发起ajax请求
-        $.ajax({
-            url: '/api/login',
-            method: 'POST',
-            // 4.3 快速获取表单的数据
-            data: $(this).serialize(),
-            // 4.4 回调函数
-            success: function (res) {
-                if (res.status !== 0) {
-                    return layer.msg('请求失败');
-                }
-                layer.msg('请求成功');
-                // res.token 字符存到本地存储 方便后面使用
-                // localStorage.setItem('token', '')
-                localStorage.setItem('token', res.token);
-                location.href = '/index.html';
-            }
-        })
+    // 3. 退出功能
+    $("#logout").on("click", function () {
+        // 没有绑定成功 就是不打印ok
+        console.log('ok');
+        // 下面的又可以执行
+        // 3.1 layer的confirm方法
+        layer.confirm('确认退出登录', { icon: 3, title: '提示' }, function (index) {
+            //do something
+            // 3.2 清除本地存储
+            localStorage.removeItem("token");
+            // 3.3 如果确认退出，就跳转到登录页面
+            location.href = 'login.html';
+            // 3.4 关闭询问框的空间,layer自带的
+            layer.close(index);
+        });
     })
 })
+
+var token = localStorage.getItem('token');
+// 1.1 获取用户信息
+function getuserinfo() {
+    $.ajax({
+        method: 'GET',
+        url: '/my/userinfo',
+        success: function (res) {
+            if (res.status !== 0) {
+                return console.log(res);
+            }
+            console.log(res);
+            // 2. 用户信息渲染
+            renderAvator(res.data);
+        },
+        // complete: function (res) {
+        //     // console.log('执行了回调函数');
+        //     // console.log(res);
+
+        //     if (res.responseJSON.status == "1" && res.responseJSON.message == "身份认证失败！") {
+        //         // 1. 清空token值
+        //         localStorage.removeItem("token");
+        //         // 2. 强制跳转到登录页面
+        //         location.href = 'login.html';
+        //     }
+        // }
+    })
+}
+function renderAvator(user) {
+    // 1.1 获取用户的名称 姓名或者是昵称都可以
+    var name = user.username || user.nickname;
+
+    // 1.2 更改欢迎文本
+    $("#welcome").html('欢迎&nbsp;&nbsp;' + name);
+    // 2. 图片头像
+    if (user.user_pic !== null) {
+        $(".avator").hide();
+        $(".layui-nav-img").attr('src', user.user_pic).show();
+    } else {
+        $(".layui-nav-img").hide();
+        var con = name[0].toUpperCase();
+        $(".avator").html(con).show();
+    }
+}
+
+
+

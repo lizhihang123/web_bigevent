@@ -1,78 +1,57 @@
-html,body {
-    margin: 0;
-    padding: 0;
+.layui-footer {
+    text-align: center;
+}
+.icon {
+    margin-right: 8px;
+}
+.layui-icon {
+    margin-right: 8px;
+    margin-left: 20px;
+}
+
+iframe {
     width: 100%;
     height: 100%;
-    background-color: pink;
-    background: url(../images/login_bg.jpg) no-repeat center;
 }
 
-.w {
-    width: 800px;
-    margin: 0 auto;
-}
-.header {
-    padding-top: 20px;
-}
+/* 头像区域 */
+/* 图片头像 */
 
-.main {
-    position: absolute;
-    top: 100px;
-    left: 400px;
-    width: 400px;
-    height: 310px;
-    background-color: #fff;
+/* 图片头像的大小 img */
+.layui-nav-img {
+    width: 40px;
+    height: 40px;
 }
-.title-box {
+/* 头像外围盒子 */
+.user-info-box {
+    width: 220px;
     height: 60px;
-    background: url(../images/login_title.png) no-repeat center;
-    padding-top: 15px;
+    line-height: 60px;
+    text-align: center;  
 }
-
-
-
-
-
-
-
-
-/* input外面的样式 */
-.layui-form {
+/* 单独给左侧头像盒子加边框 */
+.layui-side-scroll .user-info-box {
+    border-bottom: 2px solid #282b33;
+    border-top: 2px solid #282b33;
+}
+/* 文字头像 */
+.avator {
+    display: inline-block;
     position: relative;
+    top: 2px;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    text-align: center;
+    line-height: 40px;
+    /* 文字不倾斜 */
+    font-style: normal;
+    border-radius: 50%;
+    background-color: #009688;
+    color: #fff;
 }
-.layui-form-item {
-    position: relative;
-    margin: 0 20px 20px 20px;
-}
-/* 字体图标的设置 */
-.layui-form-item .iconfont {
-    position: absolute;
-    left: 15px;
-    top: 10px;
-}
-/* 注册框 */
-.reg {
-    display: none;
-}
-/* 输入框的样式 */
-.layui-input {
-    padding-left: 40px;
-}
-/* 按钮的样式 */
-.layui-btn  {
-    background-color: #1e9fff;
-}
-/* 链接的样式*/
-.link {
-    position: absolute;
-    right: -20px;
-    bottom: -48px;
-    padding: 0 20px;
-}
-.link a {
-    color: #000;
-}
-.link a:hover {
-    text-decoration: none;
-    color: #777777;
+/* 欢迎你 */
+#welcome {
+        /* 不希望文本能够被选中 */
+        user-select: none;
 }
