@@ -1,7 +1,7 @@
 $(function () {
 
     // 1. 获取用户信息的函数
-    getuserinfo();
+    getUserinfo();
     // 从layui上导出layer
     var layer = layui.layer;
     // 3. 退出功能
@@ -24,7 +24,7 @@ $(function () {
 
 var token = localStorage.getItem('token');
 // 1.1 获取用户信息
-function getuserinfo() {
+function getUserinfo() {
     $.ajax({
         method: 'GET',
         url: '/my/userinfo',
@@ -32,7 +32,7 @@ function getuserinfo() {
             if (res.status !== 0) {
                 return console.log(res);
             }
-            console.log(res);
+            // console.log(res);
             // 2. 用户信息渲染
             renderAvator(res.data);
         },
@@ -51,19 +51,22 @@ function getuserinfo() {
 }
 function renderAvator(user) {
     // 1.1 获取用户的名称 姓名或者是昵称都可以
-    var name = user.username || user.nickname;
+    var name = user.nickname || user.username;
 
     // 1.2 更改欢迎文本
     $("#welcome").html('欢迎&nbsp;&nbsp;' + name);
     // 2. 图片头像
     if (user.user_pic !== null) {
+
         $(".avator").hide();
         $(".layui-nav-img").attr('src', user.user_pic).show();
     } else {
+        // 3. 文字头像
         $(".layui-nav-img").hide();
         var con = name[0].toUpperCase();
         $(".avator").html(con).show();
     }
+    // console.log(user.user_pic); // 打印出来是base64格式字符串
 }
 
 

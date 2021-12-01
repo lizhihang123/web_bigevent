@@ -49,9 +49,9 @@
                         </a>
 
                         <dl class="layui-nav-child">
-                            <dd><a href="">Your Profile</a></dd>
-                            <dd><a href="">Settings</a></dd>
-                            <dd><a href="">Sign out</a></dd>
+                            <dd><a href="./user/user_info.html" target="fm">基本资料</a></dd>
+                            <dd><a href="./user/user_avator.html" target="fm">更换头像</a></dd>
+                            <dd><a href="./user/user_pwd.html" target="fm">重置密码</a></dd>
                         </dl>
                 </li>
                 <li class="layui-nav-item" lay-header-event="menuRight" lay-unselect>
@@ -111,9 +111,16 @@
                                 <use xlink:href="#icon-user"></use>
                             </svg>个人中心</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-face-smile"></i>基本资料</a></dd>
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-face-smile"></i>更换头像</a></dd>
-                            <dd><a href="javascript:;"><i class="layui-icon layui-icon-face-smile"></i>充值密码</a></dd>
+                            <dd>
+                                <a href="./user/user_info.html" target="fm">
+                                    <i class="layui-icon layui-icon-face-smile"></i>基本资料
+                                </a>
+                            </dd>
+                            <dd><a href="./user/user_avator.html" target="fm"><i
+                                        class="layui-icon layui-icon-face-smile"></i>更换头像</a></dd>
+                            <dd><a href="/user/user_pwd.html" target="fm"><i
+                                        class="layui-icon layui-icon-face-smile"></i>重置密码</a>
+                            </dd>
                         </dl>
                     </li>
                 </ul>
@@ -123,6 +130,8 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <!-- 要有name 和 src属性 -->
+            <!-- 这里的src是页面一刷新，就跳转的页面 -->
+            <!-- 但是不是每个a链接都会跳转到这个页面 但是target都要设置为fm 只是href设置不同即可 -->
             <iframe name="fm" src="home/dashboard.html" frameborder="0"></iframe>
         </div>
 

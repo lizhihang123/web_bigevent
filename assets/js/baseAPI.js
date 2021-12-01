@@ -5,13 +5,13 @@ $.ajaxPrefilter(function (options) {
     // 3.  每次发起请求 先判断里面是否有/my/ 如果有，就再拼接
     if (options.url.indexOf('/my/') !== -1) {
         options.headers = {
-            Authorization: token || ''
+            Authorization: localStorage.getItem('token') || ''
         }
     }
 
     options.complete = function (res) {
         // console.log('执行了回调函数');
-        console.log(res);
+        // console.log(res);
         if (res.responseJSON.status == "1" && res.responseJSON.message == "身份认证失败！") {
             // 1. 清空token值
             localStorage.removeItem("token");
